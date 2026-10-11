@@ -1,9 +1,9 @@
 {
   "name": "rowan-tizen-youtube",
-  "version": "0.1.1",
-  "description": "Minimal Tizen 3 launch diagnostic (no media autoplay)",
+  "version": "0.2.0",
+  "description": "Tizen 3 HTML5 video playback diagnostic",
   "packageType": "app",
-  "appName": "Rowan Video Test",
+  "appName": "Rowan Player",
   "appPath": "app/index.html",
   "keys": [],
   "evaluateScriptOnDocumentStart": false
