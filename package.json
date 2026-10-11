@@ -1,6 +1,6 @@
 {
   "name": "rowan-tizen-youtube",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Tizen 3 HTML5 video playback diagnostic",
   "packageType": "app",
   "appName": "Rowan Player",
