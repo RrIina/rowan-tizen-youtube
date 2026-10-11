@@ -3,7 +3,7 @@
 <style>body{margin:0;background:#101b28;color:#fff;font:24px Arial,sans-serif}header{padding:18px 32px;background:#163e56;color:#aaf4e8}main{padding:24px 32px}button,input{font:23px Arial;padding:13px;margin:6px;background:#25465b;color:white;border:2px solid #6ba8b3}button:focus,input:focus{outline:5px solid #b2fff1;background:#37677d}video{display:block;background:black;width:90%;height:48vh;margin:12px 0}#status{font-size:19px;color:#b8e6ff}input{width:55%}small{font-size:16px}</style></head>
 <body><header>Rowan Player 0.2.0 · Tizen 3</header><main><p id="status">Модуль запущен. Нажми «Тест MP4».</p>
 <video id="player" controls></video>
-<button id="test">Тест MP4</button><button id="toggle">Пуск / пауза</button><button id="stop">Стоп</button>
+<button id="exit">Выход</button><button id="test">Тест MP4</button><button id="toggle">Пуск / пауза</button><button id="stop">Стоп</button>
 <p><input id="address" placeholder="Прямая ссылка MP4"><button id="load">Открыть URL</button></p>
 <small>Это проверка воспроизведения HTML5-видео. Ссылки youtube.com/watch пока не поддерживаются.</small>
 </main><script>
@@ -11,7 +11,7 @@
 var video=document.getElementById('player'), status=document.getElementById('status');
 function msg(s){status.textContent=s}
 function playUrl(url){if(!url){msg('Введите URL');return}video.src=url;video.load();msg('Загрузка видео…');try{var p=video.play();if(p&&p.catch)p.catch(function(e){msg('Ошибка запуска: '+e.message)})}catch(e){msg('Ошибка: '+e.message)}}
-document.getElementById('test').onclick=function(){playUrl('https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4')};
+function exitApp(){try{tizen.application.getCurrentApplication().exit()}catch(e){try{history.back()}catch(x){msg('Для выхода удерживай Назад')}}}document.getElementById('exit').onclick=exitApp;document.addEventListener('keydown',function(e){if(e.keyCode===10009){e.preventDefault();exitApp()}});document.getElementById('test').onclick=function(){playUrl('https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4')};
 document.getElementById('toggle').onclick=function(){if(video.paused)video.play();else video.pause()};
 document.getElementById('stop').onclick=function(){video.pause();video.removeAttribute('src');video.load();msg('Остановлено')};
 document.getElementById('load').onclick=function(){playUrl(document.getElementById('address').value)};
